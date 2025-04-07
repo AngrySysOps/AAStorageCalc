@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Angry Admin Storage Calculator</title>
+  <link rel="stylesheet" href="./static/css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>💾 Angry Admin Storage Calculator</h1>
+    <p>Plan your storage like a pro with VMware vSAN, Proxmox ZFS, or Erasure Coding</p>
+
+    <label>Number of Hosts:<input id="hosts" type="number" value="10" /></label>
+    <label>Disks per Host:<input id="disks" type="number" value="10" /></label>
+    <label>Disk Size (TB):<input id="size" type="number" value="1" /></label>
+    <label>Cost per Disk ($):<input id="cost" type="number" value="100" /></label>
+    <label>Replication Factor:<input id="replication" type="number" value="2" /></label>
+
+    <div class="toggles">
+      <label><input type="checkbox" id="erasure" /> Use Erasure Coding</label>
+      <label><input type="checkbox" id="vsan" /> Use VMware vSAN</label>
+      <label><input type="checkbox" id="zfs" /> Use Proxmox ZFS</label>
+    </div>
+
+    <div id="erasureFields" class="hidden">
+      <label>Data Chunks (k):<input id="dataChunks" type="number" value="4" /></label>
+      <label>Parity Chunks (m):<input id="parityChunks" type="number" value="2" /></label>
+    </div>
+
+    <button onclick="calculate()">Calculate Usable Storage</button>
+
+    <div id="results" class="results"></div>
+
+    <div id="actions" class="actions hidden">
+      <button onclick="exportCSV()">📤 Export CSV</button>
+      <button onclick="window.print()">🖨️ Print</button>
+    </div>
+  </div>
+
+  <script src="./static/js/main.js"></script>
+</body>
+</html>
